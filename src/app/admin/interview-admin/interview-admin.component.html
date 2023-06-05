@@ -1,0 +1,46 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <app-admin-sidebar></app-admin-sidebar>
+      <div class="layout-page">
+        <app-admin-header></app-admin-header>
+        <div class="content-wrapper">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <form [formGroup]="conversationFormGroup" (ngSubmit)="getOrcreateConversation()">
+              <div>
+                <label>Conversation Name</label>
+                <input type="text" matInput placeholder="abcd" formControlName="name">
+                <button class="btn btn-outline-danger" mat-raised-button color="primary" type="submit"
+                  [disabled]="!conversationFormGroup.valid" title="Get Or Create Conversation">GetOrCreateConversation</button>
+              </div>
+            </form>
+            <div>
+              <div id="remote-container">
+              </div>
+              <div id="local-container">
+              </div>
+            </div>
+            <div class="App">
+                <div class="messageHeader">
+                  <h1>Messages</h1>
+                  <p>Guid: {{ guid }}</p>
+                </div>
+                <div class="messages" #messagesContainer>
+                  <div class="message" *ngFor="let message of messages">
+                    <div class="messageContainer" [ngClass]="{'sender': message.sender_id === currentuser.id, 'receiver': message.sender_id !== currentuser.id}">
+                      <p>{{ message.body }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="messageForm">
+                  <form (submit)="handleSubmit($event)">
+                    <input class="messageInput" type="text" name="message" />
+                    <button class="messageButton" type="submit">Send</button>
+                  </form>
+                </div>
+              </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

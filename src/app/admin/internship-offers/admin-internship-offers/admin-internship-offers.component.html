@@ -1,0 +1,87 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <app-admin-sidebar></app-admin-sidebar>
+        <div class="layout-page">
+            <app-admin-header></app-admin-header>
+            <div class="content-wrapper">
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <!-- Main Content -->
+                    <div class="card">
+                        <h5 class="card-header">All Company Internship offers   ({{counter}})</h5>
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th class="border-top-0">Internship Title</th>
+                                <th colspan="2" class="border-top-0">Internship Description</th>
+                                <th class="border-top-0">Level Of Study</th>
+                                <th class="border-top-0">Start Date</th>
+                                <th class="border-top-0">End Date</th>
+                                <th class="border-top-0">Is Payed</th>
+                                <th class="border-top-0">Money</th>
+
+                                <th class="border-top-0">Duration</th>
+
+                                <th class="border-top-0">Location</th>
+                                <th class="border-top-0">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                              <tr *ngFor="let item of dataArray  | paginate: { itemsPerPage: 10, currentPage: p } ">
+                                <td>{{item.titre_offre}}</td>
+                                <td colspan="2">
+                                  <div class="offer-description">{{item.description}}</div>
+                                </td>
+                                <td>{{item.niveau_etude}}</td>
+                                <td>{{item.start_date}}</td>
+                                <td>{{item.end_date}}</td>
+
+                                <td>
+                                  <span *ngIf="item.is_payed == true"  class="badge bg-label-success me-1">{{item.is_payed}}</span>
+                                  <span  *ngIf="item.is_payed == false"  class="badge bg-label-danger me-1">{{item.is_payed}}</span></td>
+                                  <td>
+                                    <span *ngIf="item.is_payed == true"  >{{item.salaire}} TND</span>
+                                    <span  *ngIf="item.is_payed == false"  ></span></td>
+                                <td>{{item.duration}} Month(s)</td>
+                                <td>{{item.location}}</td>
+
+                                <td>
+
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                    class="bx bxs-navigation me-1"></i>
+                                                Consulter</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                    class="bx bx-edit me-1"></i>
+                                                edit</a>
+                                            <a class="dropdown-item" 
+                                            (click)="deleteinternshipoffre(item.id)"
+                                            href="javascript:void(0);" ><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+
+                                        </div>
+
+                                </td>
+                            </tr>
+                            <tr *ngIf="dataArray.length === 0">
+                              <td colspan="10">
+                                <div class="empty-table-message">No Data Found</div>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <div style="text-align:right;">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
