@@ -1,0 +1,31 @@
+.alert {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 9999;
+    text-align: center;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 10px;
+    /* increased border radius */
+    animation-name: drop-down;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.alert.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+@keyframes drop-down {
+    0% {
+        top: -100px;
+    }
+
+    100% {
+        top: 60px;
+    }
+}

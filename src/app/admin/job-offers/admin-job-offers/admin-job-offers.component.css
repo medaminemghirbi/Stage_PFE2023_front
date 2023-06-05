@@ -1,0 +1,11 @@
+.offer-description {
+  white-space: pre-line;
+  word-break: break-word;
+}
+.custom-table th {
+  border-top: none !important;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+.larger-textarea {
+  height: 150px; /* Adjust the height as desired */
+}
